@@ -8,7 +8,9 @@
 
 // function 안에서 계산을 했으면 return 처리해야 함수 밖에서도 값을 볼 수 있다.
 // return을 하면 function은 return까지만 작동한다.
-// console.dir() --> 요소를 좀 더 자세하게 보여줌
+// console.dir() --> 요소를 object 형식으로 좀 더 자세하게 보여줌
+// function에 ()를 달아주면 선언되면 자동으로 실행하게 됨.
+// event 기능 사용시 function에 ()이 없어야 이벤트가 실행될 때 js가 대신 함수를 실행하도록 함
 
 /**document
  * js와 html의 상호작용 가능하게 해줌. 브라우저에서도 그냥 사용 가능한 object
@@ -18,5 +20,16 @@
  * querySelectorAll --> 조건에 맞는 모든 element를 가져옴 (array 반환)
 */
 
+/** addEventListener
+ * event = 어떤 행위를 하는 것
+ * eventListener = js가 무슨 event를 listen해야하는지 선언
+ * title.addEventListener("event", function)
+ */
+
 const title = document.querySelector(".hello h1");
-console.log(title)
+function handleTitleClick(){
+  title.style.color = "blue";
+  console.log("title was clicked!")
+}
+
+title.addEventListener("click", handleTitleClick)
