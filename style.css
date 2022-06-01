@@ -1,7 +1,1 @@
-body {
-  background-color: beige;
-}
-
-h1 {color:blue; transition:color 500ms ease-in-out}
-.clicked {color:tomato;}
-.sexy_font {font-family:'Times New Roman', Times, serif;}
+.hidden {display: none;}

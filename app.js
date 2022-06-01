@@ -18,7 +18,7 @@
  * getElementsByTagName --> name을 할당할 수 있음 (array 반환)
  * querySelector --> 조건에 맞는 맨 첫 번째 한 개의 값만 가져와줌 / css 선택자 형식 사용 가능
  * querySelectorAll --> 조건에 맞는 모든 element를 가져옴 (array 반환)
-*/
+ */
 
 /** addEventListener
  * event = 어떤 행위를 하는 것
@@ -28,16 +28,44 @@
 
 // raw value를 두번 이상 사용할 시, const로 선언해서 사용하면 에러 발생할 수 있는 부분 축소 가능
 
-const h1 = document.querySelector(".hello h1");
+/**toggle function : class name이 존재하는지를 확인함.
+ * class name이 존재하면 해당 class name 제거, 존재하지 않으면 해당 class name 추가
+ * if ~~ else 내용을 toggle로 구현 가능
+ */
 
-function handleTitleClick(){
-  // const clickedClass = "clicked";
-  // if(h1.classList.contains(clickedClass)){
-  //   h1.classList.remove(clickedClass)
-  // } else {
-  //   h1.classList.add(clickedClass);
-  // }
-  h1.classList.toggle("clicked");
+// form 기본 규칙 : input 값을 작성하고 submit을 누르거나 enter 키를 누르면 자동으로 제출되면서 브라우저가 새로고침됨
+
+// function(parameter){} => event가 실행되었을 때 event에 대한 정보(object)를 알려줄 그릇을 임의의 parameter 지정해서 설정
+// `string ${변수명}` ==> 문자 형식으로 출력
+// localStorage.setItem('key', 'value') : 브라우저에 뭔가를 저장할 수 있게 만들어줌
+
+const loginForm = document.getElementById("login-form");
+const loginInput = loginForm.querySelector("input");
+const greeting = document.getElementById("greeting");
+
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
+
+function onLoginSubmit(event) {
+  event.preventDefault();
+  loginForm.classList.add(HIDDEN_CLASSNAME);
+  const username = loginInput.value;
+  localStorage.setItem(USERNAME_KEY, username);
+  paintGreetings(username);
 }
 
-h1.addEventListener("click", handleTitleClick);
+function paintGreetings(username){
+  greeting.innerText = `Hello ${username}`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
+}
+
+loginForm.addEventListener("submit", onLoginSubmit);
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if (savedUsername === null) {
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+  paintGreetings(savedUsername);
+}
