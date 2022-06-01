@@ -26,39 +26,18 @@
  * title.addEventListener("event", function)
  */
 
+// raw value를 두번 이상 사용할 시, const로 선언해서 사용하면 에러 발생할 수 있는 부분 축소 가능
+
 const h1 = document.querySelector(".hello h1");
+
 function handleTitleClick(){
-  h1.style.color = "blue";
-  console.log("title was clicked!")
-}
-
-function handleMouseEnter(){
-  h1.innerText = "mouse is here!"
-};
-
-function handleMouseLeave(){
-  h1.innerText = "mouse is gone"
-};
-
-function handleWindowResize(){
-  document.body.style.backgroundColor = "tomato";
-};
-
-function handleWindowCopy(){
-  alert("copier!");
-};
-function handleWindowOffline(){
-  alert("SOS no WIFI")
-}
-function handleWindowOnline(){
-  alert("connected")
+  // const clickedClass = "clicked";
+  // if(h1.classList.contains(clickedClass)){
+  //   h1.classList.remove(clickedClass)
+  // } else {
+  //   h1.classList.add(clickedClass);
+  // }
+  h1.classList.toggle("clicked");
 }
 
 h1.addEventListener("click", handleTitleClick);
-h1.addEventListener("mouseenter", handleMouseEnter);
-h1.addEventListener("mouseleave", handleMouseLeave);
-
-window.addEventListener("resize", handleWindowResize);
-window.addEventListener("copy", handleWindowCopy);
-window.addEventListener("offline", handleWindowOffline);
-window.addEventListener("online",handleWindowOnline )
