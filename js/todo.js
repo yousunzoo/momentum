@@ -12,8 +12,9 @@ function saveToDos(){
 }
 const deleteToDo = function(event){
 const li = event.target.parentElement;
-console.log(li.id)
 li.remove();
+toDos = toDos.filter(todo => todo.id !== parseInt(li.id));
+saveToDos();
 }
 
 function paintTodo(newTodo){
@@ -54,3 +55,7 @@ if(savedToDos !== null){
   toDos = parsedToDos;
   parsedToDos.forEach(paintTodo);
 }
+
+
+
+// filter 안에 들어가는 함수는 true를 호출해야 새 배열에 포함됨. false이면 배열에 제외됨
