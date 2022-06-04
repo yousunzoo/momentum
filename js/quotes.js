@@ -1,3 +1,10 @@
+/** Math 소숫점 처리
+ * Math.floor : 소수점 버림(내림)
+ * Math.ceil : 소수점 올림(올림)
+ * Math.ceil : 소수점 반올림
+ */
+
+
 const quotes = [
   {quote : "Be yourself; everyone else is already taken.",
   author : "Oscar Wilde"},
@@ -19,4 +26,11 @@ const quotes = [
   author : "Mark Twain"},
   {quote : "A friend is someone who knows all about you and still loves you.",
   author : "Elbert Hubbard"}
-]
+];
+
+const quote = document.querySelector("#quote span:first-child");
+const author = document.querySelector("#quote span:last-child");
+
+todaysQuote = quotes[Math.floor(Math.random()*quotes.length)];
+quote.innerText = todaysQuote.quote;
+author.innerText = todaysQuote.author;
