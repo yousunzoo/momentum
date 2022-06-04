@@ -1,11 +1,14 @@
+// JSON.stringify = 변수 등을 문자열로 바꿈
+// JSON.parse => 문자를 살아있는 객체로 바꿀 수 있음
 const todoForm = document.getElementById('todo-form');
 const todoInput = todoForm.querySelector("input");
 const todoList = document.getElementById('todo-list');
 
+const TODOS_KEY = "todos";
 const toDos = [];
 
 function saveToDos(){
-  localStorage.setItem("todos", JSON.stringify(toDos))
+  localStorage.setItem(TODOS_KEY, JSON.stringify(toDos))
 }
 const deleteToDo = function(event){
 const li = event.target.parentElement;
@@ -33,4 +36,14 @@ function handleToDoSubmit (event){
   saveToDos();
 }
 
-todoForm.addEventListener("submit", handleToDoSubmit)
+todoForm.addEventListener("submit", handleToDoSubmit);
+
+function sayHello(item){
+  console.log("this is turn of", item)
+}
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
+if(savedToDos){
+  const parsedToDos = JSON.parse(savedToDos);
+  parsedToDos.forEach(sayHello)
+}
