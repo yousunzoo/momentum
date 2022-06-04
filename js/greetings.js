@@ -42,6 +42,7 @@
 const loginForm = document.getElementById("login-form");
 const loginInput = loginForm.querySelector("input");
 const greeting = document.getElementById("greeting");
+const todo = document.getElementById("todo");
 
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
@@ -55,8 +56,9 @@ function onLoginSubmit(event) {
 }
 
 function paintGreetings(username){
-  greeting.innerText = `Hello ${username}`;
+  greeting.innerText = `Hello ${username} :)`;
   greeting.classList.remove(HIDDEN_CLASSNAME);
+  todo.classList.remove(HIDDEN_CLASSNAME);
 }
 
 loginForm.addEventListener("submit", onLoginSubmit);
